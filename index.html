@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#107c41">
+  <meta name="description" content="Талгат CRM — управление заказами, финансами, сотрудниками и товарами компании по продаже и установке кондиционеров.">
+  <title>Талгат CRM</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+
+
+
+  
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Основная навигация">
+      <div class="brand">
+        <div class="brand-mark" id="brandMark" aria-hidden="true"><span>Т</span></div>
+        <div class="brand-copy">
+          <strong id="brandName">Талгат</strong>
+          <span>Управление компанией</span>
+        </div>
+        <button class="icon-button sidebar-close" id="sidebarClose" type="button" aria-label="Закрыть меню">×</button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" type="button" data-view="dashboard"><span class="nav-icon">⌂</span><span>Обзор</span></button>
+        <button class="nav-item" type="button" data-view="orders"><span class="nav-icon">▦</span><span>Заказы</span><span class="nav-badge" id="ordersBadge">0</span></button>
+        <button class="nav-item" type="button" data-view="finance"><span class="nav-icon">с</span><span>Финансы</span></button>
+        <div class="nav-label">Команда и склад</div>
+        <button class="nav-item" type="button" data-view="masters"><span class="nav-icon">⚒</span><span>Мастера</span></button>
+        <button class="nav-item" type="button" data-view="managers"><span class="nav-icon">◎</span><span>Менеджеры</span></button>
+        <button class="nav-item" type="button" data-view="products"><span class="nav-icon">□</span><span>Товары</span></button>
+        <div class="nav-label">Развитие</div>
+        <button class="nav-item" type="button" data-view="advertising"><span class="nav-icon">↗</span><span>Реклама</span></button>
+        <button class="nav-item" type="button" data-view="bonuses"><span class="nav-icon">★</span><span>Бонусы</span></button>
+        <button class="nav-item" type="button" data-view="company"><span class="nav-icon">ⓘ</span><span>О компании</span></button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="storage-status">
+          <span class="status-dot"></span>
+          <div><strong>Данные сохранены</strong><span>Локально на устройстве</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Открыть меню">☰</button>
+          <div>
+            <p class="eyebrow" id="pageEyebrow">Панель управления</p>
+            <h1 id="pageTitle">Обзор компании</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <label class="global-search" aria-label="Поиск">
+            <span>⌕</span>
+            <input id="globalSearch" type="search" placeholder="Найти заказ, клиента, товар..." autocomplete="off">
+            <div class="search-results" id="searchResults" hidden></div>
+          </label>
+          <button class="button button-primary" id="quickAddOrder" type="button"><span>＋</span> Новый заказ</button>
+        </div>
+      </header>
+
+      <section class="content" id="appContent" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <section class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <header class="modal-header">
+        <div>
+          <p class="eyebrow" id="modalEyebrow">Редактирование</p>
+          <h2 id="modalTitle">Форма</h2>
+        </div>
+        <button class="icon-button" id="modalClose" type="button" aria-label="Закрыть">×</button>
+      </header>
+      <div class="modal-body" id="modalBody"></div>
+    </section>
+  </div>
+
+  <div class="confirm-backdrop" id="confirmBackdrop" hidden>
+    <section class="confirm-dialog" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="confirm-icon">!</div>
+      <h2 id="confirmTitle">Подтвердите действие</h2>
+      <p id="confirmMessage">Это действие нельзя отменить.</p>
+      <div class="confirm-actions">
+        <button class="button button-secondary" id="confirmCancel" type="button">Отмена</button>
+        <button class="button button-danger" id="confirmAccept" type="button">Удалить</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast-stack" id="toastStack" aria-live="assertive"></div>
+
+  <input type="file" id="importInput" accept="application/json" hidden>
+
+  <script src="js/core.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
